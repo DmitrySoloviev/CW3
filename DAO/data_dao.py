@@ -28,3 +28,41 @@ class DataDAO:
             else:
                 pass
         return user_posts
+
+    def get_post_by_pk(self, pk):
+        list_posts = self._load_data()
+        pk_of_posts = []
+        for post in list_posts:
+            pk_of_posts.append(post['pk'])
+        if pk in pk_of_posts:
+            pass
+        else:
+            pk = 1
+        for post in list_posts:
+            if post['pk'] == pk:
+                return post
+            else:
+                pass
+    @property
+    def search_for_posts(self, query):
+
+        list_posts = self._load_data()
+        post_with_word = []
+        try:
+            for post in list_posts:
+                post['content'] = post['content'].replace(",", "")
+                post['content'] = post['content'].replace(".", "")
+                post['content'] = post['content'].replace("!", "")
+                post['content'] = post['content'].replace("?", "")
+                content_post = post['content'].split(" ")
+                w_one = query.lower()
+                w_two = query.title()
+                w_three = query.upper()
+                if w_one in content_post or w_two in content_post or w_three in content_post:
+                    post_with_word.append(post)
+                else:
+                    pass
+            return post_with_word
+        except ValueError:
+              raise "Такого слова нет"
+
