@@ -29,21 +29,21 @@ class DataDAO:
                 pass
         return user_posts
 
-    def get_post_by_pk(self, pk):
+    def get_post_by_pk(self, id_post: int):
         list_posts = self._load_data()
         pk_of_posts = []
         for post in list_posts:
             pk_of_posts.append(post['pk'])
-        if pk in pk_of_posts:
+        if id_post in pk_of_posts:
             pass
         else:
-            pk = 1
+            id_post = 1
         for post in list_posts:
-            if post['pk'] == pk:
+            if post['pk'] == id_post:
                 return post
             else:
                 pass
-    @property
+
     def search_for_posts(self, query):
 
         list_posts = self._load_data()
@@ -64,5 +64,4 @@ class DataDAO:
                     pass
             return post_with_word
         except ValueError:
-              raise "Такого слова нет"
-
+            raise "Такого слова нет"
