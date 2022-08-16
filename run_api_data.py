@@ -1,8 +1,11 @@
+import json
+
 from flask import Flask, jsonify, abort, request, render_template
 from DAO.data_dao import DataDAO
 from DAO.comments_dao import CommentsDAO
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 
 path = "data/data.json"
 path_two = "data/comments.json"
