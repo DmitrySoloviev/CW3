@@ -57,7 +57,7 @@ def get_comments_by_post_id(post_id):
     if int(post_id) in list_of_id:
         pass
     else:
-        post_id = 1
+        return None
     for comment in list_comments:
         if comment['post_id'] == int(post_id):
             comments_by_id.append(comment)
@@ -102,7 +102,7 @@ def get_post_by_pk(pk):
     if pk in pk_of_posts:
         pass
     else:
-        return "Такого pk нет"
+        return None
     for post in list_posts:
         if post['pk'] == pk:
             return post
