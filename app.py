@@ -89,7 +89,7 @@ def page_user_api(user_name):
     return jsonify(user_posts)
 
 if __name__ == '__main__':
-    app.run(port=8000, debug=True)
+    app.run(host='0.0.0.0', port=25000, debug=True)
 
 # Запуск Flask
 #app.run(port=8000, debug=True)
